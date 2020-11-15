@@ -42,8 +42,7 @@ function App() {
 
 
   return (
-    <div className="container-fluid">
-    
+    <div className="container-fluid">    
       <NavBar/>
       <div className="main flex-wrap">
       {/* <Cards cards={cardsArr}/>
