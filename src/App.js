@@ -49,6 +49,7 @@ function App() {
       <Gallery/>   */} 
       <About/>
       {/* <PicturePage/> */}
+      
       {/* <SignUp/> */}
       {/* <SignIn/> */}
       </div>
