@@ -1,38 +1,145 @@
 .App {
+  text-align: left;
+}
+
+/* NavBar */
+#main-nav {
+  box-shadow: 2px 2px 5px #ccc;
+
+}
+.navbar-brand {
+  font-size: 2rem;
+}
+.navbar .nav-item {
+  font-size: 2rem;
+  padding-right: 1.4rem;
+}
+
+.card {
+  width: 270px;
+  margin: 20px;
+  box-shadow: 1px 1px 8px 0px rgba(0, 0, 0, 0.75);
+ 
+}
+.card-img {
+  width: 100%;
+  height: 250px;
+}
+
+.card-details {
+  padding: 10px;
+}
+
+.card-title.link{
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.card-description {
+  font-size: 1rem;
+}
+.card-date{
+  font-size: 0.8rem;
+}
+.card-views{
+  font-size: 0.8rem;
+}
+
+/* About */
+.bg-img{
+  background-image: url(/img/bg.jpg);
+  /* background-color: rgb(215, 240, 238); */
+  display: inline-block;
+  height:869px ;
+  background-size: cover;
+  background-repeat: no-repeat;
+} 
+.signUp{
+  background-color : rgb(208, 250, 154);
+  /* background-color : rgb(213, 250, 154); */
+}
+
+/* helpers */
+
+.right {
+  text-align: left;
+}
+
+.left {
+  text-align: left;
+}
+
+.flex {
+  display: flex;
+}
+
+.col {
+  flex-direction: column;
+}
+
+.wrap {
+  flex-wrap: wrap;
+}
+
+/* NavBar */
+#main-nav {
+  box-shadow: 2px 2px 5px #ccc;
+  background: #fff;
+}
+.navbar-brand {
+  font-size: 2rem;
+}
+.navbar .nav-item {
+  font-size: 1.4rem;
+  padding-right: 1.4rem;
+}
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+}
+/* about me */
+.social-icons {
+  text-align: left;
+}
+/* 
+.char-icon  {
+  margin-right: 1.5rem;
+  color: rgba(241, 12, 173, 0.8) !important; 
+} */
+.social-icons a {
+  margin-right: 1.5rem;
+  color: rgba(9, 169, 190, 0.8) !important; 
+  
+}
+.social-icons a:hover {
+  color: rgba(167, 41, 240, 0.8) !important; 
+}
+.social-icons a:nth-last-child(1) {
+  margin-right: 0;
+}
+#txtMessage {
+  height: 70px;
+}
+.footer{
+  text-align: center;
+}
+.center{
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
+@media (max-width: 768px) {
+  .social-icons {
+      text-align: center;
+  }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+}
+@media (max-width: 380px) {
+  #book {
+      min-height: 600px;
   }
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+@media (max-width: 320px) {
+  #book .overlay .btn {
+      margin-bottom: 10px;
   }
 }

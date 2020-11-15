@@ -1,22 +1,6 @@
-import React, { useState } from 'react';
-import './App.css';
-import Cards from './Cards';
-import Gallery from './Gallery';
-import PicturePage from './PicturePage';
-import About from './About';
-import SignUp from './SignUp';
-import SignIn from './SignIn';
 
-import Footer from './Footer';
-import NavBar from './NavBar';
-//import data from './data';
-import 'font-awesome/css/font-awesome.min.css';
+  const data = [
 
-function App() {
- 
-  //const [cards] = useState(data);
-
-  const cardsArr = [
     { id: 1, picture: "./img/1.jpg", title: "Japanese inspiration", description: "Acrylic on canvas", date:"1.9.2010", views:14 },
     { id: 2, picture: "./img/2.jpg", title: "Plitvice lake 1", description: "Acrylic on canvas", date:"1.5.2020", views:10 },
     { id: 3, picture: "./img/3.jpg", title: "Plitvice lake 2", description: "Acrylic on canvas", date:"1.9.2016", views:5 },
@@ -36,26 +20,8 @@ function App() {
     { id: 17, picture: "./img/17.jpg", title: "Children", description: "Acrylic on canvas", date:"1.6.2014", views:12 },
     { id: 18, picture: "./img/18.jpg", title: "Blooming entrance", description: "Acrylic on canvas", date:"1.9.2014", views:10 },
     { id: 19, picture: "./img/19.jpg", title: "Flowers", description: "Acrylic on canvas", date:"1.9.2011", views:4 },
-    { id: 20, picture: "./img/20.jpg", title: "Dreamy mood", description: "Acrylic on canvas", date:"1.8.2010", views:15 },
+    { id: 20, picture: "./img/20.jpg", title: "Dreamy mood", description: "Acrylic on canvas", date:"1.8.2010", views:15 }
   ];
 
+  export default data;
 
-
-  return (
-    <div className="container-fluid">
-    
-      <NavBar/>
-      <div className="main flex-wrap">
-      {/* <Cards cards={cardsArr}/>
-      <Gallery/>   */}
-      <About/>
-      {/* <PicturePage/> */}
-      {/* <SignUp/> */}
-      {/* <SignIn/> */}
-      </div>
-      <Footer/>
-    </div>
-  );
-}
-
-export default App;
