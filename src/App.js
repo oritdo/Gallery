@@ -47,7 +47,7 @@ function App() {
       <NavBar/>
       <div className="main flex-wrap">
       {/* <Cards cards={cardsArr}/>
-      <Gallery/>   */}
+      <Gallery/>   */} 
       <About/>
       {/* <PicturePage/> */}
       {/* <SignUp/> */}
