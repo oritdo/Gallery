@@ -3,8 +3,6 @@ import React from 'react';
 function Cards(props) {
 
     return <div className="flex wrap">
-          
-
            {props.cards.map((card) =>(
             <div className="card flex raw">
                                  
