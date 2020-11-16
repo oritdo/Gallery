@@ -6,64 +6,116 @@
  import validate from './validator';
 
 function SignUp() {
-
     const [user, setUser] = useState({
-        username: {value:'', required: true, pattern: /^(?!(dada|wawa|lala)$).*$/, errors: []},
-        fullName: {value:'', required: true, pattern: /(\w.+\s).+/, errors: []},
-        email:    {value:'', required: true, pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, errors: []},
-        password: {value:'', required: true, pattern: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d@$!%*?&=+-^~`;|":<>]{6,}$/, errors: []},
-        reTypePassword: {value:'', required: true, errors: []},
-        rememberMe:  false
-    });
-
-    const onInputChange = (e) => {
+        // fullname: {
+        //   value: "",
+        //   required: true,
+        //   namepattern: /^((\b[a-zA-Z]{2,40}\b)\s*){2,}$/,
+        //   errors: []
+        // },
+        username: { 
+          value: "", 
+          required: true, 
+          minLength: 2, 
+          errors: [] },
+        email: {
+          value: "",
+          required: true,
+          pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+          errors: []
+        },
+        password: {
+          value: "",
+          required: true,
+          passwordPattern: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$/,
+          errors: []
+        },
+        confirmpassword: { 
+            value: "", 
+            required: true, 
+            errors: [] },
+        //rememberme: { required: false }
+      });
+    
+      const onInputChange = (e) => {
         console.log(e.target.name, e.target.value);
-
+    
+        // const newState = {
+        //     ...student
+        // };
+    
+        // newState[e.target.name] = e.target.value;
+    
         const newErrors = validate(
-            e.target.name, 
-            e.target.value, 
-            user[e.target.name].required,
-            user[e.target.name].pattern
+          e.target.name,
+          e.target.value,
+          user[e.target.name].required,
+          user[e.target.name].minLength,
+          user[e.target.name].pattern,
+        //   user[e.target.name].namepattern,
+          user[e.target.name].passwordPattern
         );
-
+    
         setUser({
-            ...user,
-            [e.target.name]: {
-                ...user[e.target.name],
-                value: e.target.value,
-                errors: newErrors
-            }
+          ...user,
+          [e.target.name]: {
+            ...user[e.target.name],
+            value: e.target.value,
+            errors: newErrors
+          }
         });
-    }
-
-    const onSubmit = e => {
-        e.preventDefault();
-        
-        for(const field in user){
-            const newErrors = validate(
-                field,
-                user[field].value,
-                user[field].required,
-                user[field].minLength,
-                user[field].pattern
-            );
-
-            user[field] = {
-                ...user[field],
-                errors: newErrors
-            };
+      };
+    
+      const onConfirmPassword = (e) => {
+        const newErrors = [];
+    
+        if (!user.confirmpassword.value) {
+          if (e.target.value !== user.password.value) {
+            newErrors.push(`Re typed password does not match the password.`);
+          }
         }
-
-        setUser({...user});
-
-        const rawUser = Object.keys(user)
-                            .reduce((st, prop) => {
-                                st[prop] = user[prop].value;
-                                return st;
-                            }, {});
-
+        setUser({
+          ...user,
+          confirmpassword: {
+            ...user.confirmpassword,
+            value: e.target.value,
+            errors: newErrors
+          }
+        });
+    
+        return newErrors;
+      };
+    
+      const onSubmit = (e) => {
+        e.preventDefault();
+    
+        for (const field in user) {
+          const newErrors = validate(
+            field,
+            user[field].value,
+            user[field].required,
+            user[field].minLength,
+            user[field].pattern,
+            user[field].namepattern,
+            user[field].passwordPattern
+          );
+    
+          user[field] = {
+            ...user[field],
+            errors: newErrors
+          };
+        }
+    
+        setUser({ ...user });
+    
+        const rawUser = Object.keys(user).reduce((us, prop) => {
+          us[prop] = user[prop].value;
+          return us;
+        }, {});
+    
         console.log(rawUser);
-    }
+      };
+    
 
     return (
          <div className="container-fluid bg-img">
@@ -129,9 +181,9 @@ function SignUp() {
                                     <input type="Re-type password" id="Re-type password" className="form-control" aria-describedby="Re-type password"
                                     
                                     
-                                    name="reTypePassword"
-                                    defaultValue={user.reTypePassword.value}
-                                    onBlur={onInputChange}/>
+                                    name="confirmpassword"
+                                    defaultValue={user.confirmpassword.value}
+                                    onBlur={onConfirmPassword}/>
 
                                     
                                 <small id="passwordHelpBlock" className="form-text text-muted">
@@ -140,7 +192,7 @@ function SignUp() {
 
                                 </div>
                                 {
-                                <Errors errors={user.reTypePassword.errors} />
+                                <Errors errors={user.confirmpassword.errors} />
                                 }
     <div className="form-check pl-3">  
     Categories that interest me:

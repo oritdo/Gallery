@@ -6,11 +6,13 @@ import validate from './validator';
 function SignIn() {
 
     const [user, setUser] = useState({
-        username: {value:'', required: true, pattern: /^(?!(dada|wawa|lala)$).*$/, errors: []},
-        fullName: {value:'', required: true, pattern: /(\w.+\s).+/, errors: []},
-        email:    {value:'', required: true, pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, errors: []},
-        password: {value:'', required: true, pattern: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d@$!%*?&=+-^~`;|":<>]{6,}$/, errors: []},
-        reTypePassword: {value:'', required: true, errors: []},
+        username: { value: '', required: true, minLength: 2, errors: [] },
+        // fullName: {value:'', required: true, pattern: /(\w.+\s).+/, errors: []},
+        //email:    {value:'', required: true, pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+        //errors: []
+     // },
+        password: {value:'', required: true,  passwordPattern: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$/, errors: []},
+        // reTypePassword: {value:'', required: true, errors: []},
         rememberMe:  false
     });
 
@@ -21,7 +23,9 @@ function SignIn() {
             e.target.name, 
             e.target.value, 
             user[e.target.name].required,
-            user[e.target.name].pattern
+            user[e.target.name].minLength,
+            user[e.target.name].pattern,
+            user[e.target.name].passwordPattern
         );
 
         setUser({
@@ -42,7 +46,7 @@ function SignIn() {
                 field,
                 user[field].value,
                 user[field].required,
-                user[field].minLength,
+                //user[field].minLength,
                 user[field].pattern
             );
 
@@ -109,7 +113,7 @@ function SignIn() {
                             <Errors errors={user.password.errors} />
                             }
 
-                                    <div className="form-check mb-4 mr-sm-2">
+                                    <div className="form-check mb-4 mr-sm-2 mt-2 ml-3">
                                         <input className="form-check-input" type="checkbox" id="Remember me"/>
                                         <label className="form-check-label" htmlFor="Remember me">
                                         Remember me

@@ -50,7 +50,7 @@
   background-image: url(/img/bg.jpg);
   /* background-color: rgb(215, 240, 238); */
   display: inline-block;
-  height:869px ;
+  height:1000px ;
   background-size: cover;
   background-repeat: no-repeat;
 } 
@@ -134,12 +134,12 @@
 
 }
 @media (max-width: 380px) {
-  #book {
+  #about-me {
       min-height: 600px;
   }
 }
 @media (max-width: 320px) {
-  #book .overlay .btn {
+  #about .overlay .btn {
       margin-bottom: 10px;
   }
 }
