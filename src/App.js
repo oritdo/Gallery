@@ -9,16 +9,10 @@ import SignUp from './SignUp';
 import SignIn from './SignIn';
 import Footer from './Footer';
 import NavBar from './NavBar';
-import data from './data';
 import 'font-awesome/css/font-awesome.min.css';
 
 
 function App() {
-
-
-
-  const cardsArr = data;
-
 
   return (
     <BrowserRouter>
@@ -27,16 +21,18 @@ function App() {
         <div className="main flex-wrap">
           <Switch>
             <Route path="/" exact={true}>
-              <Gallery cards={cardsArr} />
+              <Gallery />
             </Route>
-            <Route path="/about me">
+            <Route path="/about-me">
               <About />
             </Route>
-            {/* <PicturePage/>  */}
-            <Route path="/sign up">
+            <Route path="/picture/:id">
+              <PicturePage />
+            </Route>
+            <Route path="/sign-up">
               <SignUp />
             </Route>
-            <Route path="/sign in">
+            <Route path="/sign-in">
               <SignIn />
             </Route>
 

@@ -28,10 +28,10 @@ const validator = (name, value, required, minLength, pattern, namepattern, passw
         if (!passwordPattern.test(value)) {
             newErrors.push(` ${name}   should be at least 6 characters, containing Lower and Upper case characters and also numbers `);
         }
-    //  else (user.confirm.value !== user.password.value) 
-    //     newErrors.push(`Re typed password does not match the password.`);
+        //  else (user.confirm.value !== user.password.value) 
+        //     newErrors.push(`Re typed password does not match the password.`);
     }
-   
+
     return newErrors;
 }
 
